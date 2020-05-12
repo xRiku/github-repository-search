@@ -16,4 +16,15 @@ export default createGlobalStyle`
     background: #7159c1;
     -webkit-font-smoothing: antiliased !important;
   }
+
+  body, input, button {
+    color: #222;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
 `;
