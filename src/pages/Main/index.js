@@ -11,6 +11,7 @@ export default class Main extends Component {
 
   handleInputChange = (e) => {
     this.setState({ newRepo: e.target.value });
+    console.log(this.state);
   };
 
   render() {
