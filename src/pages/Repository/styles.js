@@ -24,6 +24,7 @@ export const Owner = styled.header`
   img {
     width: 120px;
     border-radius: 50%;
+    margin-top: 20px;
   }
 
   h1 {
