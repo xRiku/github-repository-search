@@ -101,3 +101,25 @@ export const IssueList = styled.ul`
     }
   }
 `;
+
+export const Buttons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    height: 50px;
+    width: 50px;
+    margin: 0 20px;
+    background-color: #fff;
+  }
+  #open {
+    color: #44ff44;
+  }
+  #closed {
+    color: #ff4444;
+  }
+  #all {
+    color: #444;
+  }
+`;

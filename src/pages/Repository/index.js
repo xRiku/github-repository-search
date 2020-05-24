@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import Container from '../../components/Container';
 
-import { Loading, Owner, IssueList } from './styles';
+import { Loading, Owner, IssueList, Buttons } from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -77,16 +77,30 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-        <IssueList>
-          <button type="button" onClick={() => this.filterIssue('open')}>
+        <Buttons>
+          <button
+            id="open"
+            type="button"
+            onClick={() => this.filterIssue('open')}
+          >
             Open
           </button>
-          <button type="button" onClick={() => this.filterIssue('closed')}>
+          <button
+            id="closed"
+            type="button"
+            onClick={() => this.filterIssue('closed')}
+          >
             Closed
           </button>
-          <button type="button" onClick={() => this.filterIssue('all')}>
+          <button
+            id="all"
+            type="button"
+            onClick={() => this.filterIssue('all')}
+          >
             All
           </button>
+        </Buttons>
+        <IssueList>
           {issues.map((issue) => (
             <li key={String(issue.id)}>
               <img src={issue.user.avatar_url} alt={issue.user.login} />
