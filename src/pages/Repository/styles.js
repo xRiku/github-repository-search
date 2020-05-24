@@ -116,6 +116,10 @@ export const Buttons = styled.div`
     border-radius: 4px;
     color: #000;
     font-weight: bold;
+
+    &:hover {
+      filter: brightness(90%);
+    }
   }
   #open {
     background-color: #44ff44;
