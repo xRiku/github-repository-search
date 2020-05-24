@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import api from '../../services/api';
 
@@ -60,7 +62,16 @@ export default class Main extends Component {
         loading: false,
         failed: false,
       });
-    } catch (error) {
+    } catch (err) {
+      toast.error('Duplicated repository or repository not found!', {
+        position: 'bottom-right',
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+      });
+
       this.setState({
         failed: true,
         loading: false,
@@ -104,6 +115,7 @@ export default class Main extends Component {
             </li>
           ))}
         </List>
+        <ToastContainer />
       </Container>
     );
   }
