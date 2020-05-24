@@ -107,19 +107,23 @@ export const Buttons = styled.div`
   align-items: center;
   justify-content: center;
 
+  margin-top: 15px;
   button {
     height: 50px;
-    width: 50px;
+    width: 60px;
     margin: 0 20px;
-    background-color: #fff;
+    border: 0;
+    border-radius: 4px;
+    color: #000;
+    font-weight: bold;
   }
   #open {
-    color: #44ff44;
+    background-color: #44ff44;
   }
   #closed {
-    color: #ff4444;
+    background-color: #ff4444;
   }
   #all {
-    color: #444;
+    background-color: #444;
   }
 `;

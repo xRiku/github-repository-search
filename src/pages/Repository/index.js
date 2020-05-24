@@ -33,7 +33,7 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'open',
-          per_page: 5,
+          // per_page: 5,
         },
       }),
     ]);
@@ -53,7 +53,7 @@ export default class Repository extends Component {
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
         state,
-        per_page: 5,
+        // per_page: 5,
       },
     });
 
