@@ -48,9 +48,11 @@ export default class Main extends Component {
     try {
       const response = await api.get(`/repos/${newRepo}`);
 
-      const data = {
-        name: response.data.full_name,
-      };
+      const data = response.data.full_name;
+
+      if (repositories.includes(data)) {
+        throw new Error('Repositório duplicado');
+      }
 
       this.setState({
         repositories: [...repositories, data],
@@ -94,9 +96,9 @@ export default class Main extends Component {
         </Form>
         <List>
           {repositories.map((repository) => (
-            <li key={repository.name}>
-              <span>{repository.name}</span>
-              <Link to={`/repository/${encodeURIComponent(repository.name)}`}>
+            <li key={repository}>
+              <span>{repository}</span>
+              <Link to={`/repository/${encodeURIComponent(repository)}`}>
                 Detalhes
               </Link>
             </li>
