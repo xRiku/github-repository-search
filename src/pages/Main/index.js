@@ -53,7 +53,7 @@ export default class Main extends Component {
       const data = response.data.full_name;
 
       if (repositories.includes(data)) {
-        throw new Error('Repositório duplicado');
+        throw new Error();
       }
 
       this.setState({
