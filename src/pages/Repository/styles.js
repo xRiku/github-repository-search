@@ -131,3 +131,14 @@ export const Buttons = styled.div`
     background-color: #444;
   }
 `;
+
+export const PageContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  button {
+    border: 0;
+    font-size: 16px;
+    background-color: #fff;
+    color: #7159c1;
+  }
+`;

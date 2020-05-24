@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import Container from '../../components/Container';
 
-import { Loading, Owner, IssueList, Buttons } from './styles';
+import { Loading, Owner, IssueList, Buttons, PageContainer } from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -21,6 +21,7 @@ export default class Repository extends Component {
     issues: [],
     loading: true,
     state: 'open',
+    page: 1,
   };
 
   async componentDidMount() {
@@ -33,7 +34,7 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'open',
-          // per_page: 5,
+          per_page: 5,
         },
       }),
     ]);
@@ -50,10 +51,35 @@ export default class Repository extends Component {
 
     const repoName = decodeURIComponent(match.params.repository);
 
+    const { page } = this.state;
+
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
         state,
-        // per_page: 5,
+        per_page: 5,
+        page: 1,
+      },
+    });
+
+    this.setState({
+      issues: issues.data,
+    });
+  };
+
+  nextPage = async () => {
+    const { match } = this.props;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
+    const { state, page } = this.state;
+
+    this.setState({ page: page + 1 });
+
+    const issues = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state,
+        per_page: 5,
+        page,
       },
     });
 
@@ -63,7 +89,7 @@ export default class Repository extends Component {
   };
 
   render() {
-    const { repository, issues, loading } = this.state;
+    const { repository, issues, loading, page } = this.state;
 
     if (loading) {
       return <Loading>Carregando</Loading>;
@@ -116,6 +142,16 @@ export default class Repository extends Component {
             </li>
           ))}
         </IssueList>
+        <PageContainer>
+          {page === 1 ? (
+            <div />
+          ) : (
+            <button type="button">Página anterior</button>
+          )}
+          <button type="button" onClick={this.nextPage}>
+            Próxima página
+          </button>
+        </PageContainer>
       </Container>
     );
   }
