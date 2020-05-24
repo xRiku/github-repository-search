@@ -20,6 +20,7 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
+    state: 'open',
   };
 
   async componentDidMount() {
@@ -44,6 +45,23 @@ export default class Repository extends Component {
     });
   }
 
+  filterIssue = async (state) => {
+    const { match } = this.props;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
+    const issues = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state,
+        per_page: 5,
+      },
+    });
+
+    this.setState({
+      issues: issues.data,
+    });
+  };
+
   render() {
     const { repository, issues, loading } = this.state;
 
@@ -60,6 +78,15 @@ export default class Repository extends Component {
           <p>{repository.description}</p>
         </Owner>
         <IssueList>
+          <button type="button" onClick={() => this.filterIssue('open')}>
+            Open
+          </button>
+          <button type="button" onClick={() => this.filterIssue('closed')}>
+            Closed
+          </button>
+          <button type="button" onClick={() => this.filterIssue('all')}>
+            All
+          </button>
           {issues.map((issue) => (
             <li key={String(issue.id)}>
               <img src={issue.user.avatar_url} alt={issue.user.login} />
