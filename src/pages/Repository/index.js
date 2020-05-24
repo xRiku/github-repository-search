@@ -51,13 +51,37 @@ export default class Repository extends Component {
 
     const repoName = decodeURIComponent(match.params.repository);
 
-    const { page } = this.state;
+    this.setState({
+      page: 1,
+    });
 
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
         state,
         per_page: 5,
         page: 1,
+      },
+    });
+
+    this.setState({
+      issues: issues.data,
+    });
+  };
+
+  previousPage = async () => {
+    const { match } = this.props;
+
+    const repoName = decodeURIComponent(match.params.repository);
+
+    const { state, page } = this.state;
+
+    this.setState({ page: page - 1 });
+
+    const issues = await api.get(`/repos/${repoName}/issues`, {
+      params: {
+        state,
+        per_page: 5,
+        page,
       },
     });
 
@@ -146,7 +170,9 @@ export default class Repository extends Component {
           {page === 1 ? (
             <div />
           ) : (
-            <button type="button">Página anterior</button>
+            <button type="button" onClick={this.previousPage}>
+              Página anterior
+            </button>
           )}
           <button type="button" onClick={this.nextPage}>
             Próxima página
