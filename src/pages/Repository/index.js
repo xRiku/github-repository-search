@@ -48,14 +48,11 @@ export default class Repository extends Component {
       }),
     ]);
 
-    if (nextPageIssues.data.length !== 0) {
-      this.setState({ nextPageAvailable: true });
-    }
-
     this.setState({
       repository: repository.data,
       issues: issues.data,
       loading: false,
+      nextPageAvailable: nextPageIssues.data.length !== 0,
     });
   }
 
@@ -112,16 +109,26 @@ export default class Repository extends Component {
 
     this.setState({ page: page + 1 });
 
-    const issues = await api.get(`/repos/${repoName}/issues`, {
-      params: {
-        state,
-        per_page: 5,
-        page: page + 1,
-      },
-    });
+    const [issues, nextPageIssues] = await Promise.all([
+      api.get(`/repos/${repoName}/issues`, {
+        params: {
+          state,
+          per_page: 5,
+          page: page + 1,
+        },
+      }),
+      api.get(`/repos/${repoName}/issues`, {
+        params: {
+          state,
+          per_page: 5,
+          page: page + 2,
+        },
+      }),
+    ]);
 
     this.setState({
       issues: issues.data,
+      nextPageAvailable: nextPageIssues.data.length !== 0,
     });
   };
 

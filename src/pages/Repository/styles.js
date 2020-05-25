@@ -135,6 +135,9 @@ export const Buttons = styled.div`
 export const PageContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  margin-top: 20px;
+  padding: 10px;
+  align-items: center;
   button {
     border: 0;
     font-size: 16px;
