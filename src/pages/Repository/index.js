@@ -22,6 +22,7 @@ export default class Repository extends Component {
     loading: true,
     state: 'open',
     page: 1,
+    nextPageAvailable: false,
   };
 
   async componentDidMount() {
@@ -29,7 +30,7 @@ export default class Repository extends Component {
 
     const repoName = decodeURIComponent(match.params.repository);
 
-    const [repository, issues] = await Promise.all([
+    const [repository, issues, nextPageIssues] = await Promise.all([
       api.get(`/repos/${repoName}`),
       api.get(`/repos/${repoName}/issues`, {
         params: {
@@ -38,7 +39,18 @@ export default class Repository extends Component {
           page: 1,
         },
       }),
+      api.get(`/repos/${repoName}/issues`, {
+        params: {
+          state: 'all',
+          per_page: 5,
+          page: 2,
+        },
+      }),
     ]);
+
+    if (nextPageIssues.data.length !== 0) {
+      this.setState({ nextPageAvailable: true });
+    }
 
     this.setState({
       repository: repository.data,
@@ -114,7 +126,7 @@ export default class Repository extends Component {
   };
 
   render() {
-    const { repository, issues, loading, page } = this.state;
+    const { repository, issues, loading, page, nextPageAvailable } = this.state;
 
     if (loading) {
       return <Loading>Carregando</Loading>;
@@ -175,9 +187,13 @@ export default class Repository extends Component {
               Página anterior
             </button>
           )}
-          <button type="button" onClick={this.nextPage}>
-            Próxima página
-          </button>
+          {nextPageAvailable ? (
+            <button type="button" onClick={this.nextPage}>
+              Próxima página
+            </button>
+          ) : (
+            <div />
+          )}
         </PageContainer>
       </Container>
     );
