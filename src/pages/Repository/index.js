@@ -35,14 +35,14 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'all',
-          per_page: 5,
+          per_page: 30,
           page: 1,
         },
       }),
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'all',
-          per_page: 5,
+          per_page: 30,
           page: 2,
         },
       }),
@@ -66,16 +66,26 @@ export default class Repository extends Component {
       state,
     });
 
-    const issues = await api.get(`/repos/${repoName}/issues`, {
-      params: {
-        state,
-        per_page: 5,
-        page: 1,
-      },
-    });
+    const [issues, nextPageIssues] = await Promise.all([
+      api.get(`/repos/${repoName}/issues`, {
+        params: {
+          state,
+          per_page: 30,
+          page: 1,
+        },
+      }),
+      api.get(`/repos/${repoName}/issues`, {
+        params: {
+          state,
+          per_page: 30,
+          page: 2,
+        },
+      }),
+    ]);
 
     this.setState({
       issues: issues.data,
+      nextPageAvailable: nextPageIssues.data.length !== 0,
     });
   };
 
@@ -91,7 +101,7 @@ export default class Repository extends Component {
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
         state,
-        per_page: 5,
+        per_page: 30,
         page: page - 1,
       },
     });
@@ -114,14 +124,14 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state,
-          per_page: 5,
+          per_page: 30,
           page: page + 1,
         },
       }),
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state,
-          per_page: 5,
+          per_page: 30,
           page: page + 2,
         },
       }),
