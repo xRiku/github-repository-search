@@ -120,6 +120,11 @@ export const Buttons = styled.div`
     &:hover {
       filter: brightness(90%);
     }
+
+    &:active {
+      filter: brightness(90%);
+      transform: translateY(4px);
+    }
   }
   #open {
     background-color: #44ff44;

@@ -164,21 +164,21 @@ export default class Repository extends Component {
             type="button"
             onClick={() => this.filterIssue('open')}
           >
-            Open
+            Abertas
           </button>
           <button
             id="closed"
             type="button"
             onClick={() => this.filterIssue('closed')}
           >
-            Closed
+            Fechadas
           </button>
           <button
             id="all"
             type="button"
             onClick={() => this.filterIssue('all')}
           >
-            All
+            Todas
           </button>
         </Buttons>
         <IssueList>

@@ -63,7 +63,7 @@ export default class Main extends Component {
         failed: false,
       });
     } catch (err) {
-      toast.error('Duplicated repository or repository not found!', {
+      toast.error('Repositório duplicado ou não encontrado!', {
         position: 'bottom-right',
         autoClose: 4000,
         hideProgressBar: false,
