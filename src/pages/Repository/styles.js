@@ -110,9 +110,9 @@ export const Buttons = styled.div`
   margin-top: 15px;
   button {
     height: 50px;
-    width: 60px;
+    width: 20%;
     margin: 0 20px;
-    border: 0;
+    border: 2px solid #000;
     border-radius: 4px;
     color: #000;
     font-weight: bold;
@@ -127,13 +127,13 @@ export const Buttons = styled.div`
     }
   }
   #open {
-    background-color: #44ff44;
+    background-color: #fff;
   }
   #closed {
-    background-color: #ff4444;
+    background-color: #fff;
   }
   #all {
-    background-color: #444;
+    background-color: #fff;
   }
 `;
 
