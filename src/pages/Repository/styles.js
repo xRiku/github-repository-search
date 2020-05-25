@@ -127,13 +127,16 @@ export const Buttons = styled.div`
     }
   }
   #open {
-    background-color: #fff;
+    background-color: ${(props) =>
+      props.filterState === 'open' ? '#7159c1' : '#fff'};
   }
   #closed {
-    background-color: #fff;
+    background-color: ${(props) =>
+      props.filterState === 'closed' ? '#7159c1' : '#fff'};
   }
   #all {
-    background-color: #fff;
+    background-color: ${(props) =>
+      props.filterState === 'all' ? '#7159c1' : '#fff'};
   }
 `;
 

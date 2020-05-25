@@ -20,7 +20,7 @@ export default class Repository extends Component {
     repository: {},
     issues: [],
     loading: true,
-    state: 'open',
+    state: 'all',
     page: 1,
     nextPageAvailable: false,
   };
@@ -144,7 +144,14 @@ export default class Repository extends Component {
   };
 
   render() {
-    const { repository, issues, loading, page, nextPageAvailable } = this.state;
+    const {
+      repository,
+      issues,
+      loading,
+      page,
+      nextPageAvailable,
+      state,
+    } = this.state;
 
     if (loading) {
       return <Loading>Carregando</Loading>;
@@ -158,7 +165,7 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-        <Buttons>
+        <Buttons filterState={state}>
           <button
             id="open"
             type="button"
