@@ -63,6 +63,7 @@ export default class Repository extends Component {
 
     this.setState({
       page: 1,
+      state,
     });
 
     const issues = await api.get(`/repos/${repoName}/issues`, {
