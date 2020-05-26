@@ -35,14 +35,14 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'all',
-          per_page: 30,
+          per_page: 10,
           page: 1,
         },
       }),
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'all',
-          per_page: 30,
+          per_page: 10,
           page: 2,
         },
       }),
@@ -70,14 +70,14 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state,
-          per_page: 30,
+          per_page: 10,
           page: 1,
         },
       }),
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state,
-          per_page: 30,
+          per_page: 10,
           page: 2,
         },
       }),
@@ -101,7 +101,7 @@ export default class Repository extends Component {
     const issues = await api.get(`/repos/${repoName}/issues`, {
       params: {
         state,
-        per_page: 30,
+        per_page: 10,
         page: page - 1,
       },
     });
@@ -124,14 +124,14 @@ export default class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state,
-          per_page: 30,
+          per_page: 10,
           page: page + 1,
         },
       }),
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state,
-          per_page: 30,
+          per_page: 10,
           page: page + 2,
         },
       }),
