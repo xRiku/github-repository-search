@@ -21,6 +21,11 @@ Link para especificação: https://github.com/Rocketseat/bootcamp-gostack-desafi
 ## :bulb: Aprendizado:
 Nesse projeto aprendi a manipular melhor os estados de um componente criando as paginações por exemplo, além de melhoras minhas habilidades com css em conjunto com a sintaxe de styled components. E conheci o Toastify que é bem legal para criação de notificações como a mensagem de erro.
 
+## :fire: Resultado:
+<p align="center">
+    <img src=".github/repo-issues.gif">
+</p>
+
 ---
 
 Feito com ❤️ por Philipe Marques 👋🏻 [Get in touch!](https://github.com/xRiku)
