@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import api from '../../services/api';
 import Container from '../../components/Container';
@@ -54,7 +56,24 @@ export default class Repository extends Component {
       loading: false,
       nextPageAvailable: nextPageIssues.data.length !== 0,
     });
+
+    if (issues.data.length === 0) {
+      this.notify();
+    }
   }
+
+  notify = () => {
+    this.forceUpdate();
+    toast.info('Repositório não contém issues', {
+      position: 'top-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   filterIssue = async (state) => {
     const { match } = this.props;
@@ -165,29 +184,33 @@ export default class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
-        <Buttons filterState={state}>
-          <button
-            id="all"
-            type="button"
-            onClick={() => this.filterIssue('all')}
-          >
-            Todas
-          </button>
-          <button
-            id="open"
-            type="button"
-            onClick={() => this.filterIssue('open')}
-          >
-            Abertas
-          </button>
-          <button
-            id="closed"
-            type="button"
-            onClick={() => this.filterIssue('closed')}
-          >
-            Fechadas
-          </button>
-        </Buttons>
+        {issues.length === 0 ? (
+          <></>
+        ) : (
+          <Buttons filterState={state}>
+            <button
+              id="all"
+              type="button"
+              onClick={() => this.filterIssue('all')}
+            >
+              Todas
+            </button>
+            <button
+              id="open"
+              type="button"
+              onClick={() => this.filterIssue('open')}
+            >
+              Abertas
+            </button>
+            <button
+              id="closed"
+              type="button"
+              onClick={() => this.filterIssue('closed')}
+            >
+              Fechadas
+            </button>
+          </Buttons>
+        )}
         <IssueList>
           {issues.map((issue) => (
             <li key={String(issue.id)}>
@@ -220,6 +243,7 @@ export default class Repository extends Component {
             <div />
           )}
         </PageContainer>
+        <ToastContainer preventDuplicates={false} />
       </Container>
     );
   }
