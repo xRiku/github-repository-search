@@ -112,7 +112,7 @@ export const Buttons = styled.div`
     height: 50px;
     width: 20%;
     margin: 0 20px;
-    border: 2px solid #000;
+    border: 2px solid #444;
     border-radius: 4px;
     color: #000;
     font-weight: bold;
@@ -129,14 +129,17 @@ export const Buttons = styled.div`
   #open {
     background-color: ${(props) =>
       props.filterState === 'open' ? '#7159c1' : '#fff'};
+    color: ${(props) => (props.filterState === 'open' ? '#fff' : '#333')};
   }
   #closed {
     background-color: ${(props) =>
       props.filterState === 'closed' ? '#7159c1' : '#fff'};
+    color: ${(props) => (props.filterState === 'closed' ? '#fff' : '#333')};
   }
   #all {
     background-color: ${(props) =>
       props.filterState === 'all' ? '#7159c1' : '#fff'};
+    color: ${(props) => (props.filterState === 'all' ? '#fff' : '#333')};
   }
 `;
 

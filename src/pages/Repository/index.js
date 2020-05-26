@@ -167,6 +167,13 @@ export default class Repository extends Component {
         </Owner>
         <Buttons filterState={state}>
           <button
+            id="all"
+            type="button"
+            onClick={() => this.filterIssue('all')}
+          >
+            Todas
+          </button>
+          <button
             id="open"
             type="button"
             onClick={() => this.filterIssue('open')}
@@ -179,13 +186,6 @@ export default class Repository extends Component {
             onClick={() => this.filterIssue('closed')}
           >
             Fechadas
-          </button>
-          <button
-            id="all"
-            type="button"
-            onClick={() => this.filterIssue('all')}
-          >
-            Todas
           </button>
         </Buttons>
         <IssueList>
