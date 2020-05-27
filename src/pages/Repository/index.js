@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import api from '../../services/api';
 import Container from '../../components/Container';
 
-import { Loading, Owner, IssueList, Buttons, PageContainer } from './styles';
+import {
+  Loading,
+  Owner,
+  IssueList,
+  Buttons,
+  PageContainer,
+  StyledToastContainer,
+} from './styles';
 
 export default class Repository extends Component {
   static propTypes = {
@@ -243,7 +250,7 @@ export default class Repository extends Component {
             <div />
           )}
         </PageContainer>
-        <ToastContainer preventDuplicates={false} />
+        <StyledToastContainer />
       </Container>
     );
   }

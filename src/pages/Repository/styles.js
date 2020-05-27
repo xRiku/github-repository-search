@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 
 export const Loading = styled.div`
   color: #fff;
@@ -154,5 +155,15 @@ export const PageContainer = styled.div`
     font-size: 16px;
     background-color: #fff;
     color: #7159c1;
+  }
+`;
+
+export const StyledToastContainer = styled(ToastContainer)`
+  .Toastify__toast--info {
+    color: #343a40;
+    background-color: #2fedad;
+    box-shadow: '2px 2px 20px 2px rgba(0,0,0,0.3)';
+    border-radius: 8px;
+    min-height: 60px;
   }
 `;
