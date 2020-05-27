@@ -43,7 +43,7 @@ Nesse projeto aprendi a manipular melhor os estados de um componente criando as 
 ## :fire: Resultado
 
 <p align="center">
-    <img src="https://res.cloudinary.com/philipemarques/video/upload/v1590547313/RepositorySearch/readmegif1_ea57an.gif">
+    <img src="https://res.cloudinary.com/philipemarques/video/upload/e_loop/q_100/v1590547313/RepositorySearch/readmegif1_ea57an.gif">
 </p>
 
 ---
