@@ -42,9 +42,18 @@ Nesse projeto aprendi a manipular melhor os estados de um componente criando as 
 
 ## :fire: Resultado
 
+### Repositório com issues
+
 <p align="center">
     <img src="https://res.cloudinary.com/philipemarques/video/upload/e_loop/q_100/v1590547313/RepositorySearch/readmegif1_ea57an.gif">
 </p>
+
+### Repositório sem issues
+
+<p align="center">
+    <img src="https://res.cloudinary.com/philipemarques/video/upload/e_loop/q_100/v1590600179/RepositorySearch/readmegif2_g9bgih.gif">
+</p>
+
 
 ---
 
